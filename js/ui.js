@@ -791,12 +791,10 @@ function hello_user(){
 	// upload the models data from cloud
 	var models_stats = JSON.parse(get_user_models(curr_user));	
 	var table = document.getElementById("models_table");
-	console.log(models_stats);
 	var len = Object.keys(models_stats.models).length;
 	
-
 	for(var i=0; i < len; i++){
-		var row = document.createElement("tr");/*table.insertRow(i+2)*/;
+		var row = document.createElement("tr");
 		var cell1 = row.insertCell(0);
 		var cell2 = row.insertCell(1);
 		var cell3 = row.insertCell(2);
