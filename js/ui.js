@@ -804,8 +804,8 @@ function hello_user(){
 		var cell7 = row.insertCell(6);
 		cell1.innerHTML = ++model_num;
 		cell2.innerHTML = models_stats.models[i].model_name;
-		var tmpstr="model_name_pos"+i.toString();
-		cell2.setAttribute("id",tmpstr);
+		var element_id = "model_name_id";
+		cell2.setAttribute("id",element_id);
 		cell3.innerHTML = models_stats.models[i].date;
 		cell4.innerHTML = models_stats.models[i].accuracy; 
 		cell5.innerHTML = models_stats.models[i].loss;
@@ -814,10 +814,10 @@ function hello_user(){
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
 		button_continue_training.addEventListener("click",function(){
-			console.log(document.getElementById(tmpstr).innerHTML);
-			console.log(tmpstr);
-			var model_name = document.getElementById(tmpstr).innerHTML;
-			localStorage.setItem("model_name",model_name);
+			console.log(document.getElementById(element_id).innerHTML);
+			console.log(element_id);
+			var model_name = document.getElementById(element_id).innerHTML;
+			localStorage.setItem("model_name" ,model_name);
 			//localStorage.setItem("model_number",num);
 			console.log(model_name);
 			//window.location = "continue_training.html";
