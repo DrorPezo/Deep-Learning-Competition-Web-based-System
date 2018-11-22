@@ -804,8 +804,8 @@ function hello_user(){
 		var cell7 = row.insertCell(6);
 		cell1.innerHTML = ++model_num;
 		cell2.innerHTML = models_stats.models[i].model_name;
-		var element_id = "model_name_id";
-		cell2.setAttribute("id",element_id);
+		var num = i;
+		var element_id = "model_name_id" + num.toString();
 		cell3.innerHTML = models_stats.models[i].date;
 		cell4.innerHTML = models_stats.models[i].accuracy; 
 		cell5.innerHTML = models_stats.models[i].loss;
