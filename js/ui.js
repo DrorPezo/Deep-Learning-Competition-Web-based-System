@@ -816,7 +816,7 @@ function hello_user(){
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
 		button_continue_training.addEventListener("click",function(){
-			console.log(models_stat);
+			console.log(models_stats);
 			call_continue_training(i);
 		});
 		cell6.appendChild(button_continue_training);
