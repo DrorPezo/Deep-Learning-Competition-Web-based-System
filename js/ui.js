@@ -744,7 +744,7 @@ function create_new_model(){
 	model_name = document.getElementById("modelname").value;
 	//setCookie("model_name", model_name,1);
 	localStorage.setItem("model_name", model_name);
-	localStorage.setItem("model_number",model_num);	
+	//localStorage.setItem("model_number",model_num);	
 	
 	//date of creation to save
 	var d = new Date();
@@ -818,7 +818,7 @@ function hello_user(){
 			console.log(tmpstr);
 			var model_name = document.getElementById(tmpstr).innerHTML;
 			localStorage.setItem("model_name",model_name);
-			localStorage.setItem("model_number",num);
+			//localStorage.setItem("model_number",num);
 			console.log(model_name);
 			//window.location = "continue_training.html";
 			//call_continue_training(i);
