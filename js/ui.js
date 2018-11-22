@@ -816,7 +816,7 @@ function hello_user(){
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
 		button_continue_training.addEventListener("click",function(){
-			console.log(models_stats);
+			//console.log(models_stats);
 			call_continue_training(i);
 		});
 		cell6.appendChild(button_continue_training);
@@ -865,7 +865,7 @@ function get_user_models(user_name){
 			return;
 		}
 	})).done(function(x){
-		console.log(ret);
+		//console.log(ret);
 	});
 	return ret;
 }
