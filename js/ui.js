@@ -804,10 +804,11 @@ function hello_user(){
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.id = name;
-		console.log(button_array[i].getAttribute('id'));
+		console.log(button_continue_training.id);
+		//console.log(button_array[i].getAttribute('id'));
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_continue_training.addEventListener("click",function(){
-			var m_name = button_continue_training.getAttribute("id");
+			var m_name = button_continue_training.id;
 			localStorage.setItem("model_name" ,m_name);
 			window.location = "continue_training.html";
 		});
