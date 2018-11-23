@@ -785,7 +785,7 @@ function hello_user(){
 	for(var j=0; j<len; j++){
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
-		button_continue_training.setArrtibute("id", models_stats.models[j].model_name);
+		button_continue_training.id = models_stats.models[j].model_name;
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_continue_training.addEventListener("click",function(){
 			var m_name = button_continue_training.getAttribute("id");
