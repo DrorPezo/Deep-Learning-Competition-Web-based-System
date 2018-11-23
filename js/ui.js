@@ -801,11 +801,9 @@ function hello_user(){
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
 		button_continue_training.setAttribute("id", models_stats.models[i].model_name);
-		console.log($('button_continue_training').attr('id'));
-		var m_name = $(this).attr('id');
-		localStorage.setItem("model_name" ,m_name);
-		console.log(m_name);
 		button_continue_training.addEventListener("click",function(){
+			var m_name = $(this).attr('id');
+			localStorage.setItem("model_name" ,m_name);
 			window.location = "continue_training.html";
 		});
 		cell6.appendChild(button_continue_training);
