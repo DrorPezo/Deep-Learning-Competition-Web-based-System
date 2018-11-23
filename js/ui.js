@@ -820,9 +820,8 @@ function hello_user(){
 		button_continue_training.setAttribute("class","btn btn-success")
 		button_continue_training.setAttribute("id",button_ids[i]);
 		button_continue_training.addEventListener("click",function(){
-			var element_id = button_ids[i];
-			console.log(document.getElementById(element_id).innerHTML);
-			var model_name = document.getElementById(element_id).innerHTML;
+			console.log(document.getElementById(button_ids[i]).innerHTML);
+			var model_name = document.getElementById(button_ids[i]).innerHTML;
 			localStorage.setItem("model_name" ,model_name);
 			//window.location = "continue_training.html";
 			//call_continue_training(i);
@@ -833,17 +832,6 @@ function hello_user(){
 	}
 	document.getElementById('username_space').innerHTML=localStorage.getItem("user");
 }
-
-//
-// function call_continue_training(num) {
-// 	var tmpstr="model_name_pos"+num;
-// 	console.log(tmpstr);
-// 	var model_name = document.getElementById(tmpstr).innerHTML;
-// 	localStorage.setItem("model_name",model_name);
-// 	localStorage.setItem("model_number",num);
-// 	console.log(model_name);
-// 	//window.location = "continue_training.html";
-// }
 
 function get_user_models(user_name){
 	/**
