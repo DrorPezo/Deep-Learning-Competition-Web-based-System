@@ -674,7 +674,6 @@ function update_username(num){
 				}
 			})
 			).done(function(x){
-				//setCookie("user", username, 1);
 				if(correct == false){
 					window.alert("Incorrect Password");
 					return;
@@ -708,11 +707,11 @@ function get_current_user(){
 
 function bucket_exists(username){
 	/**
-    * checking if a bucket exist in S3 database according the username.
+        * checking if a bucket exist in S3 database according the username.
 	* returns 0 if user does not exist, 1 if exist and -1 on error.
-    *
-    * @param {String} username - username.
-    */
+        *
+        * @param {String} username - username.
+        */
 	username = username.toLowerCase();
 	var d;
 	$.when($.ajax({
@@ -749,7 +748,7 @@ function create_new_model(){
 	var full_date = d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
 	
 	var row = table.insertRow(-1);
-    var cell1 = row.insertCell(0);
+        var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
 	var cell4 = row.insertCell(3);
@@ -772,7 +771,7 @@ function create_new_model(){
 }
 
 function hello_user(){
-	/**
+    /**
     * loading user's dashboard
     *
     */
@@ -818,10 +817,10 @@ document.getElementById("hello_user").innerHTML = "Hello " + curr_user +"! Here 
 
 function get_user_models(user_name){
 	/**
-    * retrives all user models from database.
-    *
-    * @param {String} user_name - user name.
-    */
+        * retrives all user models from database.
+        *
+        * @param {String} user_name - user name.
+        */
 	user_name = user_name.toLowerCase();
 	var ret;
 	$.when($.ajax({
@@ -850,11 +849,11 @@ function get_user_models(user_name){
 
 function get_model(bucket, model){
 	/**
-    * retrives all user models from database.
-    *
-    * @param {String} bucket - user name.
+        * retrives all user models from database.
+        *
+        * @param {String} bucket - user name.
 	* @param {String} model - model name.
-    */
+        */
 
 	var ret;
 	$.when($.get("https://jm4i2wvi7l.execute-api.eu-central-1.amazonaws.com/prod/", 
