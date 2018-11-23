@@ -803,8 +803,8 @@ function hello_user(){
 		button_continue_training.setAttribute("id", models_stats.models[i].model_name);
 		console.log($('button_continue_training').attr('id'));
 		var m_name = $(this).attr('id');
-		console.log(m_name);
 		localStorage.setItem("model_name" ,m_name);
+		console.log(m_name);
 		button_continue_training.addEventListener("click",function(){
 			window.location = "continue_training.html";
 		});
@@ -834,8 +834,6 @@ function get_user_models(user_name){
 		processData: false,
 		success: function( data, textStatus, jQxhr ){
 			ret = JSON.stringify( data );
-			//setCookie("models", ret, 1);
-			//localStorage.setItem("models", ret);
 		},
 		error: function( jqXhr, textStatus, errorThrown ){
 			console.log( errorThrown );
