@@ -783,16 +783,7 @@ function hello_user(){
 	var len = Object.keys(models_stats.models).length;
 	var button_array = Array(len);
 	for(var j=0; j<len; j++){
-		var button_continue_training = document.createElement("button");
-		button_continue_training.innerHTML = "continue training";
-		button_continue_training.id = models_stats.models[j].model_name;
-		button_continue_training.setAttribute("class","btn btn-success");
-		button_continue_training.addEventListener("click",function(){
-			var m_name = button_continue_training.getAttribute("id");
-			localStorage.setItem("model_name" ,m_name);
-			window.location = "continue_training.html";
-		});
-		button_array.push(button_continue_training);
+		
 	}
 	
 	for(var i=0; i < len; i++){
@@ -811,7 +802,17 @@ function hello_user(){
 		cell5.innerHTML = models_stats.models[i].loss;
 		var name = models_stats.models[i].model_name;
 		console.log(button_array[i].getAttribute('id'));
-		//cell6.appendChild(button_array[i]);
+		var button_continue_training = document.createElement("button");
+		button_continue_training.innerHTML = "continue training";
+		button_continue_training.id = models_stats.models[j].model_name;
+		button_continue_training.setAttribute("class","btn btn-success");
+		button_continue_training.addEventListener("click",function(){
+			var m_name = button_continue_training.getAttribute("id");
+			localStorage.setItem("model_name" ,m_name);
+			window.location = "continue_training.html";
+		});
+		cell6.appendChild(button_array[i]);
+		button_array.push(button_continue_training);
 		cell7.innerHTML = '';
 		table.appendChild(row);
 	}
