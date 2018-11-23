@@ -758,7 +758,7 @@ function create_new_model(){
 	var cell5 = row.insertCell(4);
 	var cell6 = row.insertCell(5);
 	var cell7 = row.insertCell(6);
-    cell1.innerHTML = ++model_num;
+   	cell1.innerHTML = ++model_num;
 	cell2.innerHTML = model_name;
 	cell3.innerHTML = full_date;
 	cell4.innerHTML = "0";
@@ -792,6 +792,13 @@ function hello_user(){
 	var models_stats = JSON.parse(get_user_models(curr_user));	
 	var table = document.getElementById("models_table");
 	var len = Object.keys(models_stats.models).length;
+	var button_ids = Array(len);
+	for(var i=0; i < len; i++){
+		var num = i;
+		var element_id = "model_name_id" + num.toString();
+		button_ids[i] = element_id;
+	}
+	console.log(button_ids);
 	
 	for(var i=0; i < len; i++){
 		var row = document.createElement("tr");
@@ -804,8 +811,6 @@ function hello_user(){
 		var cell7 = row.insertCell(6);
 		cell1.innerHTML = ++model_num;
 		cell2.innerHTML = models_stats.models[i].model_name;
-		var num = i;
-		var element_id = "model_name_id" + num.toString();
 		cell3.innerHTML = models_stats.models[i].date;
 		cell4.innerHTML = models_stats.models[i].accuracy; 
 		cell5.innerHTML = models_stats.models[i].loss;
@@ -814,16 +819,14 @@ function hello_user(){
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
 		button_continue_training.addEventListener("click",function(){
-			console.log(element_id);
+			var element_id = "model_name_id" + i.toString();
 			console.log(document.getElementById(element_id).innerHTML);
 			var model_name = document.getElementById(element_id).innerHTML;
 			localStorage.setItem("model_name" ,model_name);
-			console.log(model_name);
 			//window.location = "continue_training.html";
 			//call_continue_training(i);
 		});
 		cell6.appendChild(button_continue_training);
-		
 		cell7.innerHTML = '';
 		table.appendChild(row);
 	}
