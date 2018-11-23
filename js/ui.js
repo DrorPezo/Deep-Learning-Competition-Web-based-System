@@ -11,7 +11,7 @@ const layerslist=[];
 var learning_rate;
 var user;
 var model_num = 0;
-var model_name;
+//var model_name;
 var models_stats=[];
 
 //Variable for enumerating layer types
@@ -741,10 +741,8 @@ function bucket_exists(username){
 
 function create_new_model(){
 	var table = document.getElementById("models_table");
-	model_name = document.getElementById("modelname").value;
-	//setCookie("model_name", model_name,1);
-	localStorage.setItem("model_name", model_name);
-	//localStorage.setItem("model_number",model_num);	
+	var model_name = document.getElementById("modelname").value;
+	localStorage.setItem("model_name", model_name);	
 	
 	//date of creation to save
 	var d = new Date();
@@ -773,11 +771,6 @@ function create_new_model(){
 	window.location = "build_model.html";
 }
 
-function show_name(){
-	var p = document.getElementById("m_name");
-	p.appendChild("Build and train" + model_name);
-}
-
 function hello_user(){
 	/**
     * loading user's dashboard
@@ -785,14 +778,12 @@ function hello_user(){
     */
     var curr_user = localStorage.getItem("user");
     
-	document.getElementById("hello_user").innerHTML = "Hello " + curr_user +"! Here are your models";
-	//console.log(tmp);
-	//models = tmp;
+document.getElementById("hello_user").innerHTML = "Hello " + curr_user +"! Here are your models";
 	// upload the models data from cloud
 	var models_stats = JSON.parse(get_user_models(curr_user));	
 	var table = document.getElementById("models_table");
 	var len = Object.keys(models_stats.models).length;
-	
+
 	for(var i=0; i < len; i++){
 		var row = document.createElement("tr");
 		var cell1 = row.insertCell(0);
@@ -807,7 +798,7 @@ function hello_user(){
 		cell3.innerHTML = models_stats.models[i].date;
 		cell4.innerHTML = models_stats.models[i].accuracy; 
 		cell5.innerHTML = models_stats.models[i].loss;
-		
+
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
