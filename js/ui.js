@@ -814,11 +814,10 @@ function hello_user(){
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
 		button_continue_training.addEventListener("click",function(){
-			console.log(document.getElementById(element_id).innerHTML);
 			console.log(element_id);
+			console.log(document.getElementById(element_id).innerHTML);
 			var model_name = document.getElementById(element_id).innerHTML;
 			localStorage.setItem("model_name" ,model_name);
-			//localStorage.setItem("model_number",num);
 			console.log(model_name);
 			//window.location = "continue_training.html";
 			//call_continue_training(i);
