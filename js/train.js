@@ -412,8 +412,9 @@ async function Load_model() {
 	var model_name = localStorage.getItem("model_name");
 	var bucket_name =  get_current_user();
 	var model_files=JSON.parse(get_model(bucket_name,model_name));
-	//console.log(model_files[0]);
-	var model = await tf.loadModel(model_files[0]);
+	console.log(model_files[0]);
+	console.log(model_files[1]);
+	//var model = await tf.loadModel(model_files[0]);
 }
 
 function Load_build_model_page() {
