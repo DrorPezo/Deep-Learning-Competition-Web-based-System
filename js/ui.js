@@ -803,7 +803,7 @@ function hello_user(){
 		var name = models_stats.models[i].model_name;
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
-		button_continue_training.id = models_stats.models[j].model_name;
+		button_continue_training.id = name;
 		console.log(button_array[i].getAttribute('id'));
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_continue_training.addEventListener("click",function(){
