@@ -873,7 +873,7 @@ function get_model(bucket, model){
 			//ret = data;
 			localStorage.setItem('ret', data);
 	}).done(function(x){
-		console.log(ret);
+		//console.log(ret);
 	}));
 	ret = localStorage.getItem('ret');
 	return ret;
