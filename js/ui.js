@@ -771,13 +771,12 @@ function create_new_model(){
 }
 
 function hello_user(){
-    /**
-    * loading user's dashboard
-    *
-    */
-    var curr_user = localStorage.getItem("user");
-    
-document.getElementById("hello_user").innerHTML = "Hello " + curr_user +"! Here are your models";
+        /**
+        * loading user's dashboard
+        *
+        */
+        var curr_user = localStorage.getItem("user");
+        document.getElementById("hello_user").innerHTML = "Hello " + curr_user +"! Here are your models";
 	// upload the models data from cloud
 	var models_stats = JSON.parse(get_user_models(curr_user));	
 	var table = document.getElementById("models_table");
@@ -802,10 +801,11 @@ document.getElementById("hello_user").innerHTML = "Hello " + curr_user +"! Here 
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
 		button_continue_training.setAttribute("id", models_stats.models[i].model_name);
+		console.log($('button_continue_training').attr('id'));
+		var m_name = $(this).attr('id');
+		console.log(m_name);
+		localStorage.setItem("model_name" ,m_name);
 		button_continue_training.addEventListener("click",function(){
-			var m_name = $(this).attr('id');
-			console.log(m_name);
-			localStorage.setItem("model_name" ,m_name);
 			window.location = "continue_training.html";
 		});
 		cell6.appendChild(button_continue_training);
