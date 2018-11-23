@@ -853,7 +853,6 @@ function get_model(bucket, model){
 	* @param {String} model - model name.
         */
 	console.log(model);
-	var ret;
 	$.when($.get("https://jm4i2wvi7l.execute-api.eu-central-1.amazonaws.com/prod/", 
 		{bucket_name: bucket, model_name: model} , 
 		function(data){
@@ -864,7 +863,7 @@ function get_model(bucket, model){
 	}).done(function(x){
 		//console.log(ret);
 	}));
-	ret = localStorage.getItem('ret');
+	var ret = localStorage.getItem('ret');
 	console.log(ret);
 	return ret;
 }
