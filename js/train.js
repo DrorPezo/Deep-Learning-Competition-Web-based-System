@@ -407,7 +407,7 @@ async function Load_model() {
 	var model_n = localStorage.getItem('model_name');
 	console.log(model_n);
 	var bucket_name =  get_current_user();
-	var model_files=JSON.parse(get_model(bucket_name,model_n));
+	var model_files=JSON.parse(get_model(bucket_name, model_n));
 	console.log(model_files[0]);
 	console.log(model_files[1]);
 	var model = await tf.loadModel(model_files[0]);
