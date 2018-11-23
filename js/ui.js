@@ -810,7 +810,8 @@ function hello_user(){
 		cell4.innerHTML = models_stats.models[i].accuracy; 
 		cell5.innerHTML = models_stats.models[i].loss;
 		var name = models_stats.models[i].model_name;
-		cell6.appendChild(button_array[i]);
+		console.log(button_array[i].id);
+		//cell6.appendChild(button_array[i]);
 		cell7.innerHTML = '';
 		table.appendChild(row);
 	}
