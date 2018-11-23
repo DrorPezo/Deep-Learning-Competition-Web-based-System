@@ -781,7 +781,20 @@ function hello_user(){
 	var models_stats = JSON.parse(get_user_models(curr_user));	
 	var table = document.getElementById("models_table");
 	var len = Object.keys(models_stats.models).length;
-
+	var button_array = array(len);
+	for(var j=0; j<len; j++){
+		var button_continue_training = document.createElement("button");
+		button_continue_training.innerHTML = "continue training";
+		button_continue_training = models_stats.models[j].model_name;
+		button_continue_training.setAttribute("class","btn btn-success");
+		button_continue_training.addEventListener("click",function(){
+			var m_name = $('#button_continue_training').attr('id');
+			localStorage.setItem("model_name" ,m_name);
+			window.location = "continue_training.html";
+		});
+		button_array.push(button_continue_training);
+	}
+	
 	for(var i=0; i < len; i++){
 		var row = document.createElement("tr");
 		var cell1 = row.insertCell(0);
@@ -797,16 +810,7 @@ function hello_user(){
 		cell4.innerHTML = models_stats.models[i].accuracy; 
 		cell5.innerHTML = models_stats.models[i].loss;
 		var name = models_stats.models[i].model_name;
-		var button_continue_training = document.createElement("button");
-		button_continue_training.innerHTML = "continue training";
-		$(button_continue_training).attr("id",name);
-		button_continue_training.setAttribute("class","btn btn-success");
-		button_continue_training.addEventListener("click",function(){
-			var m_name = $('#button_continue_training').attr('id');
-			localStorage.setItem("model_name" ,m_name);
-			window.location = "continue_training.html";
-		});
-		cell6.appendChild(button_continue_training);
+		cell6.appendChild(button_array[i]);
 		cell7.innerHTML = '';
 		table.appendChild(row);
 	}
