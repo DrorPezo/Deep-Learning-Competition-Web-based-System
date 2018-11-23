@@ -794,7 +794,7 @@ function hello_user(){
 	var len = Object.keys(models_stats.models).length;
 	var button_ids = Array(len);
 	for(var i=0; i < len; i++){
-		var num = i;
+		var num = i + 1;
 		var element_id = "model_name_id" + num.toString();
 		button_ids[i] = element_id;
 	}
