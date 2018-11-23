@@ -812,8 +812,8 @@ function hello_user(){
 			localStorage.setItem("model_name" ,m_name);
 			window.location = "continue_training.html";
 		});
-		cell6.appendChild(button_array[i]);
-		button_array.push(button_continue_training);
+		//button_array.push(button_continue_training);
+		cell6.appendChild(button_continue_training);
 		cell7.innerHTML = '';
 		table.appendChild(row);
 	}
