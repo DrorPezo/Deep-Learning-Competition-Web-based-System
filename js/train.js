@@ -25,7 +25,7 @@ async function Pause(){
 	
 	var bucket = get_current_user();
 	var model_name = localStorage.getItem('model_name');
-    var sent = await model.save(tf.io.browserHTTPRequest(
+        var sent = await model.save(tf.io.browserHTTPRequest(
 	  'https://hhqx3yeg4k.execute-api.eu-central-1.amazonaws.com/dev/first-endpoint',
 	   {headers :{
 		   'bucket-name': bucket,
@@ -34,7 +34,7 @@ async function Pause(){
 		   'accuracy': current_accuracy
 	   }})
 	);
-	await model.save('downloads://my-model-1');
+	//await model.save('downloads://my-model-1');
 	
 	current_model_index = localStorage.getItem("model_number");
 	// current_outer_index = models_stats[current_model_index].i;
@@ -124,9 +124,9 @@ function create_and_compile_model(){
 
 async function Upload_keras_model() {
 	/**
-    * upload keras model.
-    *
-    */
+        * upload keras model.
+        *
+        */
 	//var filepath = document.getElementById("uploadfile").value;
 	var filepath = document.getElementById("fileInput").files[0].name;
 	console.log(filepath);
@@ -144,9 +144,9 @@ async function Upload_keras_model() {
 
 async function getTestBatch(i) {
 	/**
-    * get the test batch.
-    *
-    */
+        * get the test batch.
+        * 
+        */
 	var data = new CIFAR10(50+(i%10)); //create the tensors of the relevant batch
 	await data.load();
 	return data.nextBatch();
@@ -154,9 +154,9 @@ async function getTestBatch(i) {
 
 async function nextTrainBatch(BATCH_SIZE,i) {
 	/**
-    * get one of the train batches.
-    *
-    */
+        * get one of the train batches.
+        *
+        */
 	var data = new CIFAR10(i); //create the tensors of the relevant batch
 	await data.load();
 	return data.nextBatch();
@@ -164,9 +164,9 @@ async function nextTrainBatch(BATCH_SIZE,i) {
 
 async function train() { 
 	/**
-    * train the model and save the weights on S3 user's bucekt.
-    *
-    */
+        * train the model and save the weights on S3 user's bucekt.
+        *
+        */
 	document.getElementById('Pause_btn').setAttribute('class','visible');
 	//create validation data
 	var testBatch;
@@ -238,11 +238,6 @@ async function train() {
 			'accuracy': current_accuracy
 		}})
 		);
-		
-	// var models_stats_JSON = JSON.stringify(models_stats);
-	
-	//save also models_stats_JSON(JSON file)		
-		
 	console.log(bucket);
 	console.log(model_name);
 	//await model.save('downloads://my-model-1');
@@ -409,7 +404,7 @@ async function Resume_training() {
 
 //This function is used to load continue_training page
 async function Load_model() {
-	var model_name = localStorage.getItem("model_name");
+	var model_name = localStorage.getItem('model_name');
 	var bucket_name =  get_current_user();
 	var model_files=JSON.parse(get_model(bucket_name,model_name));
 	console.log(model_files[0]);
