@@ -801,10 +801,10 @@ function hello_user(){
 		cell4.innerHTML = models_stats.models[i].accuracy; 
 		cell5.innerHTML = models_stats.models[i].loss;
 		var name = models_stats.models[i].model_name;
-		console.log(button_array[i].getAttribute('id'));
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.id = models_stats.models[j].model_name;
+		console.log(button_array[i].getAttribute('id'));
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_continue_training.addEventListener("click",function(){
 			var m_name = button_continue_training.getAttribute("id");
