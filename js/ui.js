@@ -792,13 +792,6 @@ function hello_user(){
 	var models_stats = JSON.parse(get_user_models(curr_user));	
 	var table = document.getElementById("models_table");
 	var len = Object.keys(models_stats.models).length;
-	var button_ids = Array(len);
-	for(var i=0; i < len; i++){
-		var num = i + 1;
-		var element_id = "model_name_id" + num.toString();
-		button_ids[i] = element_id;
-	}
-	console.log(button_ids);
 	
 	for(var i=0; i < len; i++){
 		var row = document.createElement("tr");
@@ -818,13 +811,11 @@ function hello_user(){
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
-		button_continue_training.setAttribute("id",button_ids[i]);
+		button_continue_training.setAttribute("id", models_stats.models[i].model_name);
 		button_continue_training.addEventListener("click",function(){
-			console.log(document.getElementById(button_ids[i]).innerHTML);
-			var model_name = document.getElementById(button_ids[i]).innerHTML;
-			localStorage.setItem("model_name" ,model_name);
+			var m_name = $(this).attr('id');
+			localStorage.setItem("model_name" ,m_name);
 			//window.location = "continue_training.html";
-			//call_continue_training(i);
 		});
 		cell6.appendChild(button_continue_training);
 		cell7.innerHTML = '';
