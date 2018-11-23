@@ -781,7 +781,7 @@ function hello_user(){
 	var models_stats = JSON.parse(get_user_models(curr_user));	
 	var table = document.getElementById("models_table");
 	var len = Object.keys(models_stats.models).length;
-	var button_array = array(len);
+	var button_array = Array(len);
 	for(var j=0; j<len; j++){
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
