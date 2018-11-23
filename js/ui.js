@@ -818,8 +818,9 @@ function hello_user(){
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.setAttribute("class","btn btn-success")
+		button_continue_training.setAttribute("id",button_ids[i]);
 		button_continue_training.addEventListener("click",function(){
-			var element_id = "model_name_id" + i.toString();
+			var element_id = button_ids[i];
 			console.log(document.getElementById(element_id).innerHTML);
 			var model_name = document.getElementById(element_id).innerHTML;
 			localStorage.setItem("model_name" ,model_name);
