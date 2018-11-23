@@ -814,8 +814,9 @@ function hello_user(){
 		button_continue_training.setAttribute("id", models_stats.models[i].model_name);
 		button_continue_training.addEventListener("click",function(){
 			var m_name = $(this).attr('id');
+			console.log(m_name);
 			localStorage.setItem("model_name" ,m_name);
-			//window.location = "continue_training.html";
+			window.location = "continue_training.html";
 		});
 		cell6.appendChild(button_continue_training);
 		cell7.innerHTML = '';
