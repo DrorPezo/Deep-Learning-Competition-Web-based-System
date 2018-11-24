@@ -868,6 +868,7 @@ function get_model(bucket, model){
 			if (ret_val != null)
 				console.log(ret_val);
 				localStorage.removeItem('ret');
+				console.log(localStorage.getItem('ret'));
 			localStorage.setItem('ret', data);
 			console.log(localStorage.getItem('ret'));
 	}).done(function(x){
