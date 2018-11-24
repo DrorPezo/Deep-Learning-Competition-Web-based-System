@@ -813,7 +813,7 @@ function hello_user(){
 		console.log(button_array[i].getAttribute('id'));
 		button_array[i].addEventListener("click",function(){
 				var m_name = this.getAttribute('id');
-				console.log(m_name);
+				//console.log(m_name);
 				localStorage.setItem("model_name" ,m_name);
 				window.location = "continue_training.html";
 		});
@@ -864,19 +864,19 @@ function get_model(bucket, model){
 		function(data){
 		// Display the returned data in browser
 			//ret = data;
-			console.log(data);
+			//console.log(data);
 			ret_val = localStorage.getItem('ret');
 			if (ret_val != null)
-				console.log(ret_val);
+				//console.log(ret_val);
 				localStorage.removeItem('ret');
-				console.log(localStorage.getItem('ret'));
+				//console.log(localStorage.getItem('ret'));
 			localStorage.setItem('ret', data);
-			console.log(localStorage.getItem('ret'));
+			//console.log(localStorage.getItem('ret'));
 	}).done(function(x){
 		//console.log(ret);
 	}));
 	var ret = localStorage.getItem('ret');
-	console.log(ret);
+	//console.log(ret);
 	return ret;
 }
 
