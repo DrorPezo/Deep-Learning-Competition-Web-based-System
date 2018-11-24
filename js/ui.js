@@ -804,13 +804,13 @@ function hello_user(){
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
 		button_continue_training.id = name;
-		console.log(button_continue_training.id);
+		//console.log(button_continue_training.id);
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_continue_training.addEventListener("click",function(){
 			var m_name = button_continue_training.id;
 			console.log(m_name);
 			localStorage.setItem("model_name" ,m_name);
-			window.location = "continue_training.html";
+			//window.location = "continue_training.html";
 		});
 		//button_array.push(button_continue_training);
 		cell6.appendChild(button_continue_training);
