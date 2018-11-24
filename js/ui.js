@@ -804,16 +804,19 @@ function hello_user(){
 		//console.log(button_continue_training.id);
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_array.push(button_continue_training);
-		button_array[i].addEventListener("click",function(){
-			var m_name = button_array[i];
-			console.log(m_name);
-			localStorage.setItem("model_name" ,m_name);
-			//window.location = "continue_training.html";
-		});
 		console.log(button_array);
 		cell6.appendChild(button_array[i]);
 		cell7.innerHTML = '';
 		table.appendChild(row);
+	}
+	
+	for(var i=0; i < len; i++){
+		button_array[i].addEventListener("click",function(){
+				var m_name = button_array[i];
+				console.log(m_name);
+				localStorage.setItem("model_name" ,m_name);
+				//window.location = "continue_training.html";
+		});
 	}
 	document.getElementById('username_space').innerHTML=localStorage.getItem("user");
 }
