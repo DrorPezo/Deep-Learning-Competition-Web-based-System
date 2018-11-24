@@ -810,7 +810,7 @@ function hello_user(){
 		table.appendChild(row);
 	}
 	for(var i=0; i < len; i++){
-		console.log(button_array[i].getAttribute('id');
+		console.log(button_array[i].getAttribute('id'));
 		button_array[i].addEventListener("click",function(){
 				//var m_name = button_array[i].id;
 				//console.log(m_name);
