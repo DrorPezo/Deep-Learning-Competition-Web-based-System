@@ -804,7 +804,7 @@ function hello_user(){
 		//console.log(button_continue_training.id);
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_array.push(button_continue_training);
-		console.log(button_array);
+		//console.log(button_array);
 		cell6.appendChild(button_array[i]);
 		cell7.innerHTML = '';
 		table.appendChild(row);
