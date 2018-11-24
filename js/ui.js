@@ -809,12 +809,13 @@ function hello_user(){
 		cell7.innerHTML = '';
 		table.appendChild(row);
 	}
-	
+	console.log(button_array);
 	for(var i=0; i < len; i++){
+		console.log(button_array[i]);
 		button_array[i].addEventListener("click",function(){
-				var m_name = button_array[i];
-				console.log(m_name);
-				localStorage.setItem("model_name" ,m_name);
+				//var m_name = button_array[i].id;
+				//console.log(m_name);
+				//localStorage.setItem("model_name" ,m_name);
 				//window.location = "continue_training.html";
 		});
 	}
