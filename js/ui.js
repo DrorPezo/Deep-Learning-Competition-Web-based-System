@@ -858,6 +858,7 @@ function get_model(bucket, model){
         * @param {String} bucket - user name.
 	* @param {String} model - model name.
         */
+	jQuery.ajaxSetup({async:false});
 	$.when($.get("https://jm4i2wvi7l.execute-api.eu-central-1.amazonaws.com/prod/", 
 		{bucket_name: bucket, model_name: model} , 
 		function(data){
