@@ -809,9 +809,8 @@ function hello_user(){
 		cell7.innerHTML = '';
 		table.appendChild(row);
 	}
-	console.log(button_array);
 	for(var i=0; i < len; i++){
-		console.log(button_array[i]);
+		console.log(button_array[i].getAttribute('id');
 		button_array[i].addEventListener("click",function(){
 				//var m_name = button_array[i].id;
 				//console.log(m_name);
