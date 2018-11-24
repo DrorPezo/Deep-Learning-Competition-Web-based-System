@@ -782,9 +782,6 @@ function hello_user(){
 	var table = document.getElementById("models_table");
 	var len = Object.keys(models_stats.models).length;
 	var button_array = Array(len);
-	for(var j=0; j<len; j++){
-		
-	}
 	
 	for(var i=0; i < len; i++){
 		var row = document.createElement("tr");
@@ -812,7 +809,8 @@ function hello_user(){
 			localStorage.setItem("model_name" ,m_name);
 			//window.location = "continue_training.html";
 		});
-		//button_array.push(button_continue_training);
+		button_array.push(button_continue_training);
+		console.log(button_array);
 		cell6.appendChild(button_continue_training);
 		cell7.innerHTML = '';
 		table.appendChild(row);
