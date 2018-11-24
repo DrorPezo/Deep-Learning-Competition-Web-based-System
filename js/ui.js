@@ -781,7 +781,7 @@ function hello_user(){
 	var models_stats = JSON.parse(get_user_models(curr_user));	
 	var table = document.getElementById("models_table");
 	var len = Object.keys(models_stats.models).length;
-	var button_array = Array(len);
+	var button_array = [];
 	
 	for(var i=0; i < len; i++){
 		var row = document.createElement("tr");
