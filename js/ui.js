@@ -804,7 +804,7 @@ function hello_user(){
 		//console.log(button_continue_training.id);
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_continue_training.addEventListener("click",function(){
-			var m_name = button_continue_training.id;
+			var m_name = button_array[i];
 			console.log(m_name);
 			localStorage.setItem("model_name" ,m_name);
 			//window.location = "continue_training.html";
