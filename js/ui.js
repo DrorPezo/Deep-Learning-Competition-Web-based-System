@@ -815,7 +815,7 @@ function hello_user(){
 				var m_name = this.getAttribute('id');
 				console.log(m_name);
 				localStorage.setItem("model_name" ,m_name);
-				//window.location = "continue_training.html";
+				window.location = "continue_training.html";
 		});
 	}
 	document.getElementById('username_space').innerHTML=localStorage.getItem("user");
