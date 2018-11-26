@@ -411,6 +411,7 @@ async function Load_model() {
 	//console.log(model_files[0]);
 	//console.log(model_files[1]);
 	var model = await tf.loadModel(model_files[0]);
+	console.log(model);
 }
 
 function Load_build_model_page() {
