@@ -882,12 +882,12 @@ function get_model(bucket, model){
 
 function get_model_summary() {
 	let html = "";
-	model.summary(50, // line length
-		      undefined,
-		      (line) => {
-			 html += "<br>" + line;
-		      });
-		return html+"<br><br>";
+// 	model.summary(50, // line length
+// 		      undefined,
+// 		      (line) => {
+// 			 html += "<br>" + line;
+// 		      });
+// 		return html+"<br><br>";
 }
 
 async function continue_training_load(){
