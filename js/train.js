@@ -412,6 +412,9 @@ async function Load_model() {
 	//console.log(model_files[1]);
 	var model = await tf.loadModel(model_files[0]);
 	console.log(model);
+	document.getElementById('username_space').innerHTML=localStorage.getItem('user');
+	let summary = get_model_summary(model);
+	document.getElementById("model_summary").innerHTML = summary;
 }
 
 function Load_build_model_page() {
