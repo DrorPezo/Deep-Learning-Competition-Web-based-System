@@ -880,21 +880,18 @@ function get_model(bucket, model){
 	return ret;
 }
 
-function get_model_summary() {
+function get_model_summary(model) {
 	let html = "";
-// 	model.summary(50, // line length
-// 		      undefined,
-// 		      (line) => {
-// 			 html += "<br>" + line;
-// 		      });
-// 		return html+"<br><br>";
+	model.summary(50, // line length
+ 		      undefined,
+		      (line) => {
+			 html += "<br>" + line;
+		      });
+	return html+"<br><br>";
 }
 
 async function continue_training_load(){
-	await Load_model();
-	document.getElementById('username_space').innerHTML=localStorage.getItem('user');
-	let summary = get_model_summary();
-	document.getElementById("model_summary").innerHTML = summary;
+	await Load_model();	
 }
 
 function Set_continue_training(){
