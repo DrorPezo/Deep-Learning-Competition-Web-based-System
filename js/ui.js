@@ -899,7 +899,7 @@ async function continue_training_load(){
 
 function Set_continue_training(){
 	var epochs_number=Number(document.getElementById("epochs_number").value);
-	Resume_training(/*epochs_number*/);
+	Resume_training(epochs_number);
 }
 
 //last line
