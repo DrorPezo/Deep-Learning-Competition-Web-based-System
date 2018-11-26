@@ -410,7 +410,7 @@ async function Load_model() {
 	var model_files=JSON.parse(get_model(bucket_name, model_n));
 	//console.log(model_files[0]);
 	//console.log(model_files[1]);
-	var model = await tf.loadModel(model_files[0]);
+	//var model = await tf.loadModel(model_files[0]);
 	var model = await tf.loadModel(tf.io.browserFiles(model_files[0], model_files[1]));
 	console.log(model);
 	document.getElementById('username_space').innerHTML=localStorage.getItem('user');
