@@ -807,7 +807,7 @@ function hello_user(){
 		button_array.push(button_continue_training);
 		//console.log(button_array);
 		cell6.appendChild(button_array[i]);
-		cell7.innerHTML = '';
+		cell7.innerHTML = models_stats.models[i].epochs;
 		table.appendChild(row);
 	}
 	for(var i=0; i < len; i++){
@@ -816,6 +816,7 @@ function hello_user(){
 				var m_name = this.getAttribute('id');
 				//console.log(m_name);
 				localStorage.setItem("model_name" ,m_name);
+				localStorage.setItem("current_epoch",models_stats.models[i].epochs);
 				window.location = "continue_training.html";
 		});
 	}
