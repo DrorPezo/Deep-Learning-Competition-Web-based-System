@@ -350,8 +350,9 @@ async function continue_training(iner_index,outer_index,current_epoch,epochs_num
 				
 				// Plot loss + accuracy.
 				if(j == 4 || j == 9 || j == 14){
-				plotLosses(loss);
-				plotAcc(accuracy);
+					console.log(loss);
+					plotLosses(loss);
+					plotAcc(accuracy);
 				}
 				//var t1 = performance.now(); remove comment if want to count time of train of one batch
 				//window.alert((t1 - t0)/1000 + " seconds"); remove comment if want to count time of train of one batch
