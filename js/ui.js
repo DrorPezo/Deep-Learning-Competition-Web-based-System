@@ -586,7 +586,7 @@ function plotAcc(acc){
 	}
 	else if(index_of_acc_Values==150)
 	{
-		dataset_acc.add(newObject_loss);
+		dataset_acc.add(newObject_acc);
 		graph2d_acc.redraw();
 		graph2d_acc.fit();
 		graph2d_acc.moveTo(index_of_acc_Values);
