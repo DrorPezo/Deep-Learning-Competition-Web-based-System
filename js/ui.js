@@ -555,7 +555,7 @@ function plotLosses(loss){
 	}
 	var progress_bar = document.getElementById('train_progress_val');
 	var percents = (index_of_loss_Values)/1.5;
-	
+	document.getElementById("number_of_epochs").innerHTML="Epochs: "+curr_epoch;
 	var style="width: " + percents +"%;";
 	progress_bar.setAttribute("style",style);
 	progress_bar.setAttribute("aria-valuenow",percents);
