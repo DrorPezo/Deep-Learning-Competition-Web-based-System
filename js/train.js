@@ -408,12 +408,13 @@ async function Load_model() {
 	var bucket_name =  get_current_user();
 	var model_files=JSON.parse(get_model(bucket_name, model_n));
 	var pre_trained_model = await tf.loadModel(model_files[0]);
-	console.log(pre_trained_model);
+	model = tf.model({inputs: pre_trained_model.inputs, outputs: pre_trained_model.output});
+	console.log(model);
 
 	document.getElementById('username_space').innerHTML=localStorage.getItem('user');
-	let summary = get_model_summary(pre_trained_model);
+	let summary = get_model_summary(model);
 	document.getElementById("model_summary").innerHTML = summary;
-	model = tf.model({inputs: pre_trained_model.inputs, outputs: pre_trained_model.output});
+	
 }
 
 function Load_build_model_page() {
