@@ -236,8 +236,8 @@ function createLayer(i){
 	var base=document.getElementById("layers");
 	base.style.opacity = "0.7";
 	var container = document.createElement("div");
-	var bg_color = ["container-fluid bg-light","container-fluid bg-white"];
-	container.setAttribute("class",bg_color[(i+1)%2]);
+	container.setAttribute("class","container-fluid");
+	container.setAttribute("style","background-color:rgb(255,255,254)");
 	var container_id = "layer" + i;
 	container.setAttribute("id",container_id);	
 	var row1 = document.createElement("div");
