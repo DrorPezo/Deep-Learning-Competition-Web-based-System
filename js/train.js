@@ -410,9 +410,7 @@ async function Load_model() {
 	var pre_trained_model = await tf.loadModel(model_files[0]);
 	console.log(pre_trained_model.inputs);
 	console.log(pre_trained_model.output);
-	var last_layer = pre_trained_model.getLayer(2);
-	console.log(last_layer);
-	model = tf.model({inputs: pre_trained_model.inputs, outputs: last_layer.output});
+	model = tf.model({inputs: pre_trained_model.inputs, outputs: last_layer.outputs});
 	console.log(model);
 
 	document.getElementById('username_space').innerHTML=localStorage.getItem('user');
