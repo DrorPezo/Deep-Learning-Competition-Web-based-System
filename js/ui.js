@@ -344,6 +344,7 @@ function update_values_and_train(){
 		window.alert("epochs must be integer");
 		return;
 	}
+	epochs=Number(epochs_);
 	if(counter==0){
 		window.alert("Not enough layers");
 		return;
@@ -880,25 +881,7 @@ function get_model(bucket, model){
 	return ret;
 }
 
-function get_model_summary(model) {
-	let html = "";
-	model.summary(50, // line length
- 		      undefined,
-		      (line) => {
-			 html += "<br>" + line;
-		      });
-	return html+"<br><br>";
-}
 
-async function continue_training_load(){
-	await Load_model();	
-}
-
-function Set_continue_training(){
-	var epochs_number=Number(document.getElementById("epochs_number").value);
-	console.log(epochs_number);
-	Resume_training(epochs_number);
-}
 
 //last line
 
