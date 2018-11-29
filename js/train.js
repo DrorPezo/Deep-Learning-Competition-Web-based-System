@@ -413,7 +413,7 @@ async function Load_model() {
 	document.getElementById('username_space').innerHTML=localStorage.getItem('user');
 	let summary = get_model_summary(pre_trained_model);
 	document.getElementById("model_summary").innerHTML = summary;
-	return tf.model({inputs: pre_trained_model.inputs, outputs: pre_trained_model.output});
+	model = tf.model({inputs: pre_trained_model.inputs, outputs: pre_trained_model.output});
 }
 
 function Load_build_model_page() {
