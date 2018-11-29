@@ -5,6 +5,8 @@ const BATCH_SIZE = 1000;
 const TRAIN_BATCHES = 50;//need to choose
 const TEST_BATCH_SIZE = 1000;
 var model;
+var epochs;
+var curr_epoch;
 var paused=false;
 var test_prediction_number=1;
 var test_prediction_index_number=0;
@@ -31,7 +33,8 @@ async function Pause(){
 		   'bucket-name': bucket,
 		   'model-name': model_name,
 		   'loss': current_loss,
-		   'accuracy': current_accuracy
+		   'accuracy': current_accuracy,
+		   'epochs': curr_epoch
 	   }})
 	);
 	//await model.save('downloads://my-model-1');
@@ -120,6 +123,7 @@ function create_and_compile_model(){
 	}
 	const optimizer = tf.train.sgd(LEARNING_RATE);
 	model.compile({optimizer: optimizer, loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
+	curr_epoch=0;
 }
 
 async function Upload_keras_model() {
@@ -226,6 +230,8 @@ async function train() {
 			//wait for the next frame
 			await tf.nextFrame();
 		}
+		curr_epoch++;
+		epochs--;
 	}
 	var bucket = localStorage.getItem('user');
 	var model_name = localStorage.getItem('model_name');
@@ -235,7 +241,8 @@ async function train() {
 			'bucket-name': bucket,
 			'model-name': model_name,
 			'loss': current_loss,
-			'accuracy': current_accuracy
+			'accuracy': current_accuracy,
+			'epochs': curr_epoch
 		}})
 		);
 	console.log(bucket);
@@ -311,7 +318,7 @@ async function predict(num) {
 	test_prediction_index_number=(test_prediction_index_number+test_prediction_number)%1000;
 }
 
-async function continue_training(current_epoch,epochs_number) { 
+async function continue_training(current_epoch, epochs_number) { 
 	document.getElementById('Pause_btn').setAttribute('class','visible');
 	document.getElementById('Resume_btn').setAttribute('class','invisible');
 	//create validation data
@@ -369,6 +376,8 @@ async function continue_training(current_epoch,epochs_number) {
 			//wait for the next frame
 			await tf.nextFrame();
 		}
+		curr_epoch++;
+		epochs--;
 	}
 	var bucket = get_current_user();
 	var model_name = localStorage.getItem('model_name');
@@ -378,7 +387,8 @@ async function continue_training(current_epoch,epochs_number) {
 			'bucket-name': bucket,
 			'model-name': model_name,
 			'loss': current_loss,
-			'accuracy': current_accuracy
+			'accuracy': current_accuracy,
+			'epochs': curr_epoch
 		}})
 		);
 	//var models_stats_JSON = JSON.stringify(models_stats);
@@ -397,7 +407,7 @@ async function Resume_training() {
 		paused=false;
 		clear_predictions();
 		test_prediction_number=1000;
-		await continue_training(0,1);
+		await continue_training(curr_epoch,curr_epoch+epochs);
 		showPredictions();
 	}
 }
@@ -423,5 +433,24 @@ function Load_build_model_page() {
 	current_model_index = localStorage.getItem("model_number");
 }
 
+function get_model_summary(model) {
+	let html = "";
+	model.summary(50, // line length
+ 		      undefined,
+		      (line) => {
+			 html += "<br>" + line;
+		      });
+	return html+"<br><br>";
+}
+
+async function continue_training_load(){
+	await Load_model();	
+}
+
+function Set_continue_training(){
+	var epochs_number=Number(document.getElementById("epochs_number").value);
+	epochs=epochs_number;
+	Resume_training();
+}
 
 
