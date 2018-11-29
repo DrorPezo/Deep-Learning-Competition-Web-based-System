@@ -408,7 +408,9 @@ async function Load_model() {
 	var bucket_name =  get_current_user();
 	var model_files=JSON.parse(get_model(bucket_name, model_n));
 	var pre_trained_model = await tf.loadModel(model_files[0]);
-	var last_layer = model.getLayer(2);
+	console.log(pre_trained_model.inputs);
+	console.log(pre_trained_model.output);
+	var last_layer = pre_trained_model.getLayer(2);
 	console.log(last_layer);
 	model = tf.model({inputs: pre_trained_model.inputs, outputs: last_layer.output});
 	console.log(model);
