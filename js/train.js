@@ -398,7 +398,7 @@ async function Resume_training() {
 		paused=false;
 		clear_predictions();
 		test_prediction_number=1000;
-		await continue_training(current_inner_index,current_outer_index,0,1);
+		await continue_training(0,0,0,1);
 		showPredictions();
 	}
 }
