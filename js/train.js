@@ -448,8 +448,11 @@ async function continue_training_load(){
 }
 
 function Set_continue_training(){
+	
 	var epochs_number=Number(document.getElementById("epochs_number").value);
 	epochs=epochs_number;
+	curr_epoch=localStorage.getItem("current_epoch");
+	console.log(curr_epoch);
 	Resume_training();
 }
 
