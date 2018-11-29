@@ -538,6 +538,14 @@ function plotLosses(loss){
 		var progress_bar = document.getElementById('train_progress');
 		progress_bar.setAttribute("class","visible");
 	}
+	else if(index_of_loss_Values==150)
+	{
+		dataset_loss.add(newObject_loss);
+		graph2d_loss.redraw();
+		graph2d_loss.fit();
+		graph2d_loss.moveTo(index_of_loss_Values);
+		index_of_loss_Values=0;		
+	}
 	else{
 		dataset_loss.add(newObject_loss);
 		graph2d_loss.redraw();
@@ -547,6 +555,7 @@ function plotLosses(loss){
 	}
 	var progress_bar = document.getElementById('train_progress_val');
 	var percents = (index_of_loss_Values)/1.5;
+	
 	var style="width: " + percents +"%;";
 	progress_bar.setAttribute("style",style);
 	progress_bar.setAttribute("aria-valuenow",percents);
@@ -574,6 +583,14 @@ function plotAcc(acc){
 		graph2d_acc = new vis.Graph2d(container_acc, dataset_acc, options_acc);
 		graph2d_acc.fit();
 		
+	}
+	else if(index_of_acc_Values==150)
+	{
+		dataset_acc.add(newObject_loss);
+		graph2d_acc.redraw();
+		graph2d_acc.fit();
+		graph2d_acc.moveTo(index_of_acc_Values);
+		index_of_acc_Values=0;		
 	}
 	else{
 		dataset_acc.add(newObject_acc);
