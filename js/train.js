@@ -311,7 +311,7 @@ async function predict(num) {
 	test_prediction_index_number=(test_prediction_index_number+test_prediction_number)%1000;
 }
 
-async function continue_training(iner_index,outer_index,current_epoch,epochs_number) { 
+async function continue_training(current_epoch,epochs_number) { 
 	document.getElementById('Pause_btn').setAttribute('class','visible');
 	document.getElementById('Resume_btn').setAttribute('class','invisible');
 	//create validation data
@@ -322,7 +322,7 @@ async function continue_training(iner_index,outer_index,current_epoch,epochs_num
 	var loss=0;
 	var accuracy=0;
 	for(let ii=current_epoch;ii<epochs_number;ii++){
-		for (i=outer_index; i < TRAIN_BATCHES; i++) {
+		for (i=0; i < TRAIN_BATCHES; i++) {
 			//set validation data every 5 train batches
 			if(i%5 == 0){
 				testBatch = await getTestBatch(i/5);
@@ -331,7 +331,7 @@ async function continue_training(iner_index,outer_index,current_epoch,epochs_num
 				validationData = [TestBatchImages, TestBatchLabels];
 			}
 			const batch = await nextTrainBatch(BATCH_SIZE,i);
-			for (j=iner_index; j < Math.floor(BATCH_SIZE/64);j++){
+			for (j=0; j < Math.floor(BATCH_SIZE/64);j++){
 				//var t0 = performance.now(); remove comment if want to count time of train of one batch
 				if(paused==true){
 					return 0;
@@ -340,7 +340,7 @@ async function continue_training(iner_index,outer_index,current_epoch,epochs_num
 				const BatchLabels =  batch.ys.slice([64*j,0],[64,10]);
 				const history = await model.fit(
 									BatchImages, BatchLabels,
-									{batchSize: 64,validationData,epochs: Number(epochs_)}
+									{batchSize: 64,validationData,epochs: 1}
 								);	
 				loss = history.history.loss[0];
 				accuracy = history.history.acc[0];
@@ -356,7 +356,6 @@ async function continue_training(iner_index,outer_index,current_epoch,epochs_num
 				}
 				//var t1 = performance.now(); remove comment if want to count time of train of one batch
 				//window.alert((t1 - t0)/1000 + " seconds"); remove comment if want to count time of train of one batch
-				iner_index=0;
 				// models_stats[current_model_index].j=j;
 				// models_stats[current_model_index].i=i;
 				// models_stats[current_model_index].loss=loss;
@@ -398,7 +397,7 @@ async function Resume_training() {
 		paused=false;
 		clear_predictions();
 		test_prediction_number=1000;
-		await continue_training(0,0,0,1);
+		await continue_training(0,1);
 		showPredictions();
 	}
 }
