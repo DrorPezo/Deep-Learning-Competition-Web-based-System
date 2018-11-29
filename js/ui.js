@@ -234,7 +234,6 @@ function changetype(j,i,k){
 
 function createLayer(i){
 	var base=document.getElementById("layers");
-	base.style.opacity = "0.7";
 	var container = document.createElement("div");
 	container.setAttribute("class","container");
 	container.setAttribute("style","background-color:rgb(255,255,255)");
