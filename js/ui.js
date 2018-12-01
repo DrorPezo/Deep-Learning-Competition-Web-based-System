@@ -814,7 +814,7 @@ function hello_user(){
 		var name = models_stats.models[i].model_name;
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
-		var epochs_string = models_stats.models[i].epochs+Math.ceil(Math.log(models_stats.models[i].epochs));
+		var epochs_string = models_stats.models[i].epochs+Math.ceil(0.00001+Math.log(models_stats.models[i].epochs));
 		button_continue_training.id = name+epochs_string;
 		window.alert(button_continue_training.id);
 		button_continue_training.setAttribute("class","btn btn-success");
