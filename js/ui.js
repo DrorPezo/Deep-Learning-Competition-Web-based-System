@@ -816,7 +816,6 @@ function hello_user(){
 		button_continue_training.innerHTML = "continue training";
 		var epochs_string = models_stats.models[i].epochs+" "+Math.ceil(0.00001+Math.log10(models_stats.models[i].epochs));
 		button_continue_training.id = name+epochs_string;
-		window.alert(button_continue_training.id);
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_array.push(button_continue_training);
 		cell6.appendChild(button_array[i]);
