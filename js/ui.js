@@ -522,12 +522,15 @@ const options_loss = {
 		end: 150,
 		showCurrentTime: false,
 };
-
+var first_epoch = true;
 function plotLosses(loss){
 	var title = document.getElementById('losstitle');
 	$(title).show();
 	var newObject_loss = {x: index_of_loss_Values, y: loss};
 	if(index_of_loss_Values==0){
+		if(first_epoch==false){
+			dataset_loss.destroy();	
+		}
 		container_loss = document.getElementById('plot_loss_graph');
 		dataset_loss = new vis.DataSet();
 		dataset_loss.add(newObject_loss);
@@ -543,7 +546,8 @@ function plotLosses(loss){
 		graph2d_loss.redraw();
 		graph2d_loss.fit();
 		graph2d_loss.moveTo(index_of_loss_Values);
-		index_of_loss_Values=0;		
+		index_of_loss_Values=0;
+		first_epoch = false;
 	}
 	else{
 		dataset_loss.add(newObject_loss);
@@ -575,6 +579,9 @@ function plotAcc(acc){
 	$(title).show();
 	var newObject_acc = {x: index_of_acc_Values, y: acc};
 	if(index_of_acc_Values==0){
+		if(first_epoch==false){
+			dataset_acc.destroy();	
+		}
 		container_acc = document.getElementById('plot_acc_graph');
 		dataset_acc = new vis.DataSet();
 		dataset_acc.add(newObject_acc);
