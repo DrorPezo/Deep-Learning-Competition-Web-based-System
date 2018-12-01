@@ -519,7 +519,7 @@ var container_loss;
 var dataset_loss;
 const options_loss = {
 		start: 0,
-		end: 150,
+		end: 149,
 		showCurrentTime: false,
 };
 var first_epoch = true;
@@ -540,15 +540,6 @@ function plotLosses(loss){
 		var progress_bar = document.getElementById('train_progress');
 		progress_bar.setAttribute("class","visible");
 	}
-	else if(index_of_loss_Values==150)
-	{
-		dataset_loss.add(newObject_loss);
-		graph2d_loss.redraw();
-		graph2d_loss.fit();
-		graph2d_loss.moveTo(index_of_loss_Values);
-		index_of_loss_Values=0;
-		first_epoch = false;
-	}
 	else{
 		dataset_loss.add(newObject_loss);
 		graph2d_loss.redraw();
@@ -563,6 +554,10 @@ function plotLosses(loss){
 	progress_bar.setAttribute("style",style);
 	progress_bar.setAttribute("aria-valuenow",percents);
 	document.getElementById('train_progress_txt').innerHTML = (index_of_loss_Values)/1.5 +"% completed";
+	if(index_of_loss_Values==150){
+		index_of_loss_Values=0;
+		first_epoch = false;
+	}
 }
 
 var index_of_acc_Values=0;
@@ -571,7 +566,7 @@ var container_acc;
 var dataset_acc;
 const options_acc = {
 		start: 0,
-		end: 150,
+		end: 149,
 		showCurrentTime: false
 };
 function plotAcc(acc){
@@ -590,20 +585,15 @@ function plotAcc(acc){
 		graph2d_acc.fit();
 		
 	}
-	else if(index_of_acc_Values==150)
-	{
-		dataset_acc.add(newObject_acc);
-		graph2d_acc.redraw();
-		graph2d_acc.fit();
-		graph2d_acc.moveTo(index_of_acc_Values);
-		index_of_acc_Values=0;		
-	}
 	else{
 		dataset_acc.add(newObject_acc);
 		graph2d_acc.redraw();
 		graph2d_acc.fit();
 		graph2d_acc.moveTo(index_of_acc_Values);
 		index_of_acc_Values+=1;
+	}
+	if(index_of_acc_Values==150){
+		index_of_acc_Values=0;
 	}
 }
 
