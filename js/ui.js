@@ -814,7 +814,7 @@ function hello_user(){
 		var name = models_stats.models[i].model_name;
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
-		var epochs_string = models_stats.models[i].epochs+Math.ceil(0.00001+Math.log(models_stats.models[i].epochs));
+		var epochs_string = models_stats.models[i].epochs+" "+Math.ceil(0.00001+Math.log10(models_stats.models[i].epochs));
 		button_continue_training.id = name+epochs_string;
 		window.alert(button_continue_training.id);
 		button_continue_training.setAttribute("class","btn btn-success");
@@ -828,8 +828,8 @@ function hello_user(){
 		button_array[i].addEventListener("click",function(){
 				var m_name = this.getAttribute('id');
 				var l_epochs = m_name.slice(m_name.length-1,m_name.length);
-				var m_epochs=m_name.slice(m_name.length-1-l_epochs,m_name.length-1);
-				m_name=m_name.slice(0,m_name.length-1-l_epochs);
+				var m_epochs=m_name.slice(m_name.length-2-l_epochs,m_name.length-2);
+				m_name=m_name.slice(0,m_name.length-2-l_epochs);
 				localStorage.setItem("model_name" ,m_name);
 				localStorage.setItem("current_epoch",m_epochs);
 				window.location = "continue_training.html";
