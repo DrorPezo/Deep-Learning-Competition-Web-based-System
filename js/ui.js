@@ -815,6 +815,9 @@ function hello_user(){
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
 		var epochs_string = models_stats.models[i].epochs+" "+Math.ceil(0.00001+Math.log10(models_stats.models[i].epochs));
+		if(Math.ceil(0.00001+Math.log10(models_stats.models[i].epochs))<0){
+			epochs_string="f";
+		}
 		button_continue_training.id = name+epochs_string;
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_array.push(button_continue_training);
@@ -826,9 +829,16 @@ function hello_user(){
 		//console.log(button_array[i].getAttribute('id'));
 		button_array[i].addEventListener("click",function(){
 				var m_name = this.getAttribute('id');
+			        var m_epochs;
 				var l_epochs = m_name.slice(m_name.length-1,m_name.length);
-				var m_epochs=m_name.slice(m_name.length-2-l_epochs,m_name.length-2);
-				m_name=m_name.slice(0,m_name.length-2-l_epochs);
+				if(l_epochs=="f"){
+					m_epochs=0;
+					m_name=m_name.slice(0,m_name.length-1);
+				}
+				else{
+					m_epochs=m_name.slice(m_name.length-2-l_epochs,m_name.length-2);
+					m_name=m_name.slice(0,m_name.length-2-l_epochs);					
+				}
 				localStorage.setItem("model_name" ,m_name);
 				localStorage.setItem("current_epoch",m_epochs);
 				window.location = "continue_training.html";
