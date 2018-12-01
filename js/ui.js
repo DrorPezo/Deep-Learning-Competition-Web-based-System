@@ -814,11 +814,10 @@ function hello_user(){
 		var name = models_stats.models[i].model_name;
 		var button_continue_training = document.createElement("button");
 		button_continue_training.innerHTML = "continue training";
-		button_continue_training.id = name;
-		//console.log(button_continue_training.id);
+		var epochs_string = models_stats.models[i].epochs+Math.ceil(Math.log(models_stats.models[i].epochs))
+		button_continue_training.id = name+epochs_string;
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_array.push(button_continue_training);
-		//console.log(button_array);
 		cell6.appendChild(button_array[i]);
 		cell7.innerHTML = models_stats.models[i].epochs;
 		table.appendChild(row);
@@ -827,9 +826,11 @@ function hello_user(){
 		//console.log(button_array[i].getAttribute('id'));
 		button_array[i].addEventListener("click",function(){
 				var m_name = this.getAttribute('id');
-				//console.log(m_name);
+				var l_epochs = m_name.slice(m_name.length-1,m_name.length);
+				var m_epochs=m_name.slice(m_name.length-1-l_epochs,m_name.length-1);
+				m_name=m_name.slice(0,m_name.length-1-l_epochs);
 				localStorage.setItem("model_name" ,m_name);
-				localStorage.setItem("current_epoch",models_stats.models[i].epochs);
+				localStorage.setItem("current_epoch",m_epochs);
 				window.location = "continue_training.html";
 		});
 	}
