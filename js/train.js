@@ -40,10 +40,9 @@ async function Pause(){
 	//await model.save('downloads://my-model-1');
 	
 	current_model_index = localStorage.getItem("model_number");
-	// current_outer_index = models_stats[current_model_index].i;
-	// current_inner_index = models_stats[current_model_index].j;
-	// var models_stats_JSON = JSON.stringify(models_stats);
-	
+	index_of_loss_Values=0;
+	index_of_acc_Values=0;
+	first_epoch = false;
 	document.getElementById('Pause_btn').setAttribute('class','invisible');
 	document.getElementById('Resume_btn').setAttribute('class','visible');	
 }
