@@ -529,7 +529,7 @@ function plotLosses(loss){
 	var newObject_loss = {x: index_of_loss_Values, y: loss};
 	if(index_of_loss_Values==0){
 		if(first_epoch==false){
-			dataset_loss.destroy();	
+			graph2d_loss.destroy();	
 		}
 		container_loss = document.getElementById('plot_loss_graph');
 		dataset_loss = new vis.DataSet();
@@ -580,7 +580,7 @@ function plotAcc(acc){
 	var newObject_acc = {x: index_of_acc_Values, y: acc};
 	if(index_of_acc_Values==0){
 		if(first_epoch==false){
-			dataset_acc.destroy();	
+			graph2d_acc.destroy();	
 		}
 		container_acc = document.getElementById('plot_acc_graph');
 		dataset_acc = new vis.DataSet();
