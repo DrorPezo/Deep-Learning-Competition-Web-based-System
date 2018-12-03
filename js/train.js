@@ -34,7 +34,8 @@ async function Pause(){
 		   'model-name': model_name,
 		   'loss': current_loss,
 		   'accuracy': current_accuracy,
-		   'epochs': curr_epoch
+		   'epochs': curr_epoch,
+		   'learning-rate': LEARNING_RATE
 	   }})
 	);
 	//await model.save('downloads://my-model-1');
@@ -241,7 +242,8 @@ async function train() {
 			'model-name': model_name,
 			'loss': current_loss,
 			'accuracy': current_accuracy,
-			'epochs': curr_epoch
+			'epochs': curr_epoch,
+			'learning-rate': LEARNING_RATE
 		}})
 		);
 	console.log(bucket);
@@ -387,7 +389,8 @@ async function continue_training(current_epoch, epochs_number) {
 			'model-name': model_name,
 			'loss': current_loss,
 			'accuracy': current_accuracy,
-			'epochs': curr_epoch
+			'epochs': curr_epoch,
+			'learning-rate': LEARNING_RATE
 		}})
 		);
 	//var models_stats_JSON = JSON.stringify(models_stats);
