@@ -420,6 +420,8 @@ async function Load_model() {
 	//var pre_trained_model = await tf.loadModel(model_files[0]);
 	//model = tf.model({inputs: pre_trained_model.inputs, outputs: pre_trained_model.layers[2].output});
 	//console.log(model);
+	const optimizer = tf.train.sgd(0.2);
+	model.compile({optimizer: optimizer, loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
 	document.getElementById('username_space').innerHTML=localStorage.getItem('user');
 	let summary = get_model_summary(model);
 	document.getElementById("model_summary").innerHTML = summary;
