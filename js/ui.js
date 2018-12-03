@@ -819,6 +819,8 @@ function hello_user(){
 			epochs_string="f";
 		}
 		button_continue_training.id = name+epochs_string;
+		var learningrate_str =  " " + models_stats.models[i].learning_rate.toString().slice(2, models_stats.models[i].learning_rate.toString().length)+" "+(models_stats.models[i].learning_rate.toString().length-2)+ " " + Math.ceil(0.00001+Math.log10(models_stats.models[i].learning_rate.toString().length-2));
+		button_continue_training.id = button_continue_training.id + learningrate_str;
 		button_continue_training.setAttribute("class","btn btn-success");
 		button_array.push(button_continue_training);
 		cell6.appendChild(button_array[i]);
@@ -829,7 +831,12 @@ function hello_user(){
 		//console.log(button_array[i].getAttribute('id'));
 		button_array[i].addEventListener("click",function(){
 				var m_name = this.getAttribute('id');
-			        var m_epochs;
+				var m_learning_rate;
+				var l1_learning_rate = m_name.slice(m_name.length-1,m_name.length);
+				var l2_learning_rate = m_name.slice(m_name.length-2-l1_learning_rate,m_name.length-2);
+				var m_learning_rate = m_name.slice(m_name.length-3-l1_learning_rate-l2_learning_rate,m_name.length-3-l1_learning_rate);
+			        m_name=m_name.slice(0,m_name.length-4-l1_learning_rate-l2_learning_rate);
+				var m_epochs;
 				var l_epochs = m_name.slice(m_name.length-1,m_name.length);
 				if(l_epochs=="f"){
 					m_epochs=0;
@@ -839,8 +846,10 @@ function hello_user(){
 					m_epochs=m_name.slice(m_name.length-2-l_epochs,m_name.length-2);
 					m_name=m_name.slice(0,m_name.length-2-l_epochs);					
 				}
+				m_learning_rate= Number("0."+m_learning_rate.toString());
 				localStorage.setItem("model_name" ,m_name);
 				localStorage.setItem("current_epoch",m_epochs);
+				localStorage.setItem("learning_rate",m_learning_rate);
 				window.location = "continue_training.html";
 		});
 	}
