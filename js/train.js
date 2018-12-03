@@ -452,10 +452,17 @@ async function continue_training_load(){
 
 function Set_continue_training(){
 	
-	var epochs_number=Number(document.getElementById("epochs_number").value);
-	epochs=epochs_number;
+	var epochs_number=document.getElementById("epochs_number").value;
+	if(isNaN(epochs_number) || epochs_number<=0){
+		window.alert("epochs must be a positive number");
+		return;
+	}
+	if (Number.isInteger(Number(epochs_number))==false){
+		window.alert("epochs must be integer");
+		return;
+	}
+	epochs=Number(epochs_number);
 	curr_epoch=localStorage.getItem("current_epoch");
-	console.log(curr_epoch);
 	Resume_training();
 }
 
