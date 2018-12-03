@@ -423,7 +423,8 @@ async function Load_model() {
 	//var pre_trained_model = await tf.loadModel(model_files[0]);
 	//model = tf.model({inputs: pre_trained_model.inputs, outputs: pre_trained_model.layers[2].output});
 	//console.log(model);
-	const optimizer = tf.train.sgd(0.2);
+	LEARNING_RATE=localStorage.getItem('learning_rate');
+	const optimizer = tf.train.sgd(LEARNING_RATE);
 	model.compile({optimizer: optimizer, loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
 	document.getElementById('username_space').innerHTML=localStorage.getItem('user');
 	let summary = get_model_summary(model);
