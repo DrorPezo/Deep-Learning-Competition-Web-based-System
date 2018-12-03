@@ -15,6 +15,7 @@ var current_inner_index;
 var current_outer_index;
 var current_loss = 0;
 var current_accuracy = 0;
+var is_continue_training=false;
 
 
 async function Pause(){
@@ -124,26 +125,6 @@ function create_and_compile_model(){
 	const optimizer = tf.train.sgd(LEARNING_RATE);
 	model.compile({optimizer: optimizer, loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
 	curr_epoch=0;
-}
-
-async function Upload_keras_model() {
-	/**
-        * upload keras model.
-        *
-        */
-	//var filepath = document.getElementById("uploadfile").value;
-	var filepath = document.getElementById("fileInput").files[0].name;
-	console.log(filepath);
-	if(filepath.substr(-5) != ".json"){
-		window.alert("Unsupported type of file")
-		return;
-	}
-	try{
-	model = await tf.loadModel(filepath);
-	}
-	catch(err){
-       window.alert(err);
-	}
 }
 
 async function getTestBatch(i) {
@@ -406,7 +387,8 @@ async function Resume_training() {
 		document.getElementById("Continue_Training_visability").setAttribute("class","invisible");
 	}
 	finally{
-		paused=false;
+		paused=is_continue_training;
+		is_continue_training=false;
 		clear_predictions();
 		test_prediction_number=1000;
 		await continue_training(curr_epoch,curr_epoch+epochs);
@@ -420,9 +402,6 @@ async function Load_model() {
 	var bucket_name =  get_current_user();
 	var model_files=JSON.parse(get_model(bucket_name, model_n));
 	model = await tf.loadModel(model_files[0],model_files[1]);
-	//var pre_trained_model = await tf.loadModel(model_files[0]);
-	//model = tf.model({inputs: pre_trained_model.inputs, outputs: pre_trained_model.layers[2].output});
-	//console.log(model);
 	LEARNING_RATE=localStorage.getItem('learning_rate');
 	const optimizer = tf.train.sgd(LEARNING_RATE);
 	model.compile({optimizer: optimizer, loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
@@ -463,6 +442,7 @@ function Set_continue_training(){
 	}
 	epochs=Number(epochs_number);
 	curr_epoch=localStorage.getItem("current_epoch");
+	is_continue_training=true;
 	Resume_training();
 }
 
