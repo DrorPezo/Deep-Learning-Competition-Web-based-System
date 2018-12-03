@@ -15,7 +15,6 @@ var current_inner_index;
 var current_outer_index;
 var current_loss = 0;
 var current_accuracy = 0;
-var is_continue_training=false;
 
 
 async function Pause(){
@@ -388,8 +387,7 @@ async function Resume_training() {
 		document.getElementById("Continue_Training_visability").setAttribute("class","invisible");
 	}
 	finally{
-		paused=is_continue_training;
-		is_continue_training=false;
+		paused=false;
 		clear_predictions();
 		test_prediction_number=1000;
 		await continue_training(curr_epoch,curr_epoch+epochs);
@@ -444,7 +442,6 @@ function Set_continue_training(){
 	}
 	epochs=Number(epochs_number);
 	curr_epoch=localStorage.getItem("current_epoch");
-	is_continue_training=true;
 	Resume_training();
 }
 
