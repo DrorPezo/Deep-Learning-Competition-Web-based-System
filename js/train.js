@@ -442,6 +442,7 @@ function Set_continue_training(){
 	}
 	epochs=Number(epochs_number);
 	curr_epoch=localStorage.getItem("current_epoch");
+	document.getElementById("plot_area").setAttribute("class","visible");
 	Resume_training();
 }
 
