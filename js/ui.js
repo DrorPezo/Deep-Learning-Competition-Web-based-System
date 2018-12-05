@@ -460,7 +460,7 @@ function get_type(i) {
 async function draw_prediction(batch, predictions, labels,num_of_pics,start_index){
 	var guess_accuracy=0;
 	var drawing_place = document.getElementById("show_predictions");
-	var tot_accuracy = document.createElement("h3");
+	var tot_accuracy = document.createElement("h5");
 	tot_accuracy.setAttribute("id","tot_accuracy");
 	drawing_place.appendChild(tot_accuracy);
 	var row1;
