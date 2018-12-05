@@ -403,8 +403,8 @@ async function Load_model() {
 	model = await tf.loadModel(model_files[0],model_files[1]);
 	LEARNING_RATE=localStorage.getItem('learning_rate');
 	//const optimizer = tf.train.sgd(LEARNING_RATE);
-	const optimizer = tf.train.adadelta(LEARNING_RATE);
-	model.compile({optimizer: optimizer, loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
+	//const optimizer = tf.train.adadelta(LEARNING_RATE);
+	//model.compile({optimizer: optimizer, loss: 'categoricalCrossentropy', metrics: ['accuracy'] });
 	document.getElementById('username_space').innerHTML=localStorage.getItem('user');
 	let summary = get_model_summary(model);
 	document.getElementById("model_summary").innerHTML = summary;
