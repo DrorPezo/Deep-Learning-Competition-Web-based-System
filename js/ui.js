@@ -458,7 +458,11 @@ function get_type(i) {
 // predictions of the model and the actual labels to print wether the prediction
 // was correct or not.
 async function draw_prediction(batch, predictions, labels,num_of_pics,start_index){
+	var guess_accuracy=0;
 	var drawing_place = document.getElementById("show_predictions");
+	var tot_accuracy = document.createElement("div");
+	tot_accuracy.setAttribute("id","tot_accuracy");
+	drawing_place.appendChild(tot_accuracy);
 	var row1;
 	var row2;
 	for(let i=0;i<num_of_pics; i++){
@@ -489,6 +493,7 @@ async function draw_prediction(batch, predictions, labels,num_of_pics,start_inde
 			return;
 		}
 		else if(predictions[i+start_index]==labels[i+start_index]){//if the guess was correct
+			guess_accuracy++;
 			string2+= ") - correct";
 			guess.setAttribute("style","color:#007000");
 		}
@@ -511,6 +516,12 @@ async function draw_prediction(batch, predictions, labels,num_of_pics,start_inde
 			drawing_place.appendChild(row2);
 		}
 	}
+	for(let i = num_of_pics; i< 1000 ; i++){
+		if(predictions[i+start_index]==labels[i+start_index]){//if the guess was correct
+			guess_accuracy++;
+		}
+	}
+	document.getElementById("tot_accuracy").innerHTML = "Accuracy: "+(guess_accuracy/1000)+"%, 50 pictures for example:"
 }
 
 var index_of_loss_Values=0;
