@@ -38,7 +38,7 @@ async function Pause(){
 		   'learning-rate': LEARNING_RATE
 	   }})
 	);
-	await model.save('downloads://my-model-1');
+	//await model.save('downloads://my-model-1');
 	
 	current_model_index = localStorage.getItem("model_number");
 	index_of_loss_Values=0;
