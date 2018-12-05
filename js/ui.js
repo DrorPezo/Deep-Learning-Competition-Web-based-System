@@ -570,12 +570,14 @@ const options_acc = {
 		showCurrentTime: false
 };
 function plotAcc(acc){
+	console.log(acc);
 	var title = document.getElementById('acctitle');
 	$(title).show();
 	var newObject_acc = {x: index_of_acc_Values, y: acc};
 	if(index_of_acc_Values==0){
 		if(first_epoch==false){
-			graph2d_acc.destroy();	
+			graph2d_acc.destroy();
+			console.log("first");
 		}
 		container_acc = document.getElementById('plot_acc_graph');
 		dataset_acc = new vis.DataSet();
@@ -583,6 +585,7 @@ function plotAcc(acc){
 		index_of_acc_Values+=1;
 		graph2d_acc = new vis.Graph2d(container_acc, dataset_acc, options_acc);
 		graph2d_acc.fit();
+		console.log(graph2d_acc);
 		
 	}
 	else{
