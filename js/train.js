@@ -333,7 +333,8 @@ async function continue_training(current_epoch, epochs_number) {
 								);	
 				loss = history.history.loss[0];
 				accuracy = history.history.acc[0];
-				
+				current_loss = loss;
+				current_accuracy = accuracy;				
 				//free some gpu memory
 				tf.dispose([BatchImages,BatchLabels]);
 				
