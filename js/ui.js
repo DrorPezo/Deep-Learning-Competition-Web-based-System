@@ -669,7 +669,7 @@ function update_username(num){
 					console.log("User created successfully");
 					//setCookie("user", username, 1);
 					localStorage.setItem("user", username);
-					window.location="successfully_sign_up.html";
+					window.location="dashboard.html";
 					});
 			}
 			else{
