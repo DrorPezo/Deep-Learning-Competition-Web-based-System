@@ -626,10 +626,11 @@ function update_username(num){
 	//console.log("username :" + username +" password: " + hashed_password);
 	if (username == ''){
 		window.alert("Please enter your username");
-		returnl
+		return;
 	}
 	if(password.length < 6){
-		window.alert("Please enter at least 6 letters password")
+		window.alert("Please enter at least 6 letters password");
+		return;
 	}
 
 	if(num==0){
