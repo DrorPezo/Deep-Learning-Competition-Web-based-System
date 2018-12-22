@@ -368,8 +368,8 @@ function update_values_and_train(){
 				window.alert("filters must be a number");
 				return;
 				}
-			if(isNaN(layerslist[i].conv.strides) || layerslist[i].conv.strides<1){
-				window.alert("strides must be a number greater than zero");
+			if(isNaN(layerslist[i].conv.strides) || layerslist[i].conv.strides<1 || layerslist[i].conv.strides>31){
+				window.alert("strides must be a number");
 				return;
 				}
 		}
@@ -381,11 +381,11 @@ function update_values_and_train(){
 			layerslist[i].pool.type = document.getElementById(string1).value;
 			layerslist[i].pool.strides = document.getElementById(string2).value;
 			layerslist[i].pool.filters = document.getElementById(string3).value;
-			if(isNaN(layerslist[i].pool.filters) || layerslist[i].pool.filters<1){
+			if(isNaN(layerslist[i].pool.filters) || layerslist[i].pool.filters<1 || layerslist[i].pool.filters>31){
 				window.alert("filters must be a number");
 				return;
 			}
-			if(isNaN(layerslist[i].pool.strides) || layerslist[i].pool.strides<1){
+			if(isNaN(layerslist[i].pool.strides) || layerslist[i].pool.strides<1 || layerslist[i].pool.strides>31){
 				window.alert("strides must be a number");
 				return;
 			}
