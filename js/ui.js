@@ -368,8 +368,8 @@ function update_values_and_train(){
 				window.alert("filters must be a number");
 				return;
 				}
-			if(isNaN(layerslist[i].conv.strides) || layerslist[i].conv.strides<1 || layerslist[i].conv.strides>31){
-				window.alert("strides must be a number");
+			if(isNaN(layerslist[i].conv.strides) || layerslist[i].conv.strides<1){
+				window.alert("strides must be a number greater than zero");
 				return;
 				}
 		}
