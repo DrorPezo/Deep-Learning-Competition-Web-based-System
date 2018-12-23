@@ -822,6 +822,7 @@ function hello_user(){
 		var cell5 = row.insertCell(4);
 		var cell6 = row.insertCell(5);
 		var cell7 = row.insertCell(6);
+		var cell8 = row.insertCell(7);
 		cell1.innerHTML = ++model_num;
 		cell2.innerHTML = models_stats.models[i].model_name;
 		cell3.innerHTML = models_stats.models[i].date;
@@ -841,6 +842,7 @@ function hello_user(){
 		button_array.push(button_continue_training);
 		cell6.appendChild(button_array[i]);
 		cell7.innerHTML = models_stats.models[i].epochs;
+		cell8.innerHTML = models_stats.models[i].learning_rate;
 		table.appendChild(row);
 	}
 	for(var i=0; i < len; i++){
