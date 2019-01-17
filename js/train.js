@@ -171,7 +171,7 @@ async function train() {
 			}
 			const batch = await nextTrainBatch(BATCH_SIZE,i);
 			for (let j=0 ; j < Math.floor(BATCH_SIZE/64);j++){
-				var t0 = performance.now(); remove comment if want to count time of train of one batch
+				var t0 = performance.now(); //remove comment if want to count time of train of one batch
 				if(paused==true){
 					current_outer_index = i;
 					current_inner_index = j;
