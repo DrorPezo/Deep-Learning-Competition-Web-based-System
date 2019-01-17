@@ -202,8 +202,8 @@ async function train() {
 				// models_stats[current_model_index].loss=loss;
 				// models_stats[current_model_index].acc=accuracy;
 				
-				var t1 = performance.now(); remove comment if want to count time of train of one batch
-				console.log((t1 - t0)/1000 + " seconds"); remove comment if want to count time of train of one batch
+				var t1 = performance.now(); //remove comment if want to count time of train of one batch
+				console.log((t1 - t0)/1000 + " seconds"); //remove comment if want to count time of train of one batch
 			}
 			//free some gpu memory
 			tf.dispose([batch]);
