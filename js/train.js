@@ -171,7 +171,6 @@ async function train() {
 			}
 			const batch = await nextTrainBatch(BATCH_SIZE,i);
 			for (let j=0 ; j < Math.floor(BATCH_SIZE/64);j++){
-				var t0 = performance.now(); //remove comment if want to count time of train of one batch
 				if(paused==true){
 					current_outer_index = i;
 					current_inner_index = j;
@@ -201,9 +200,6 @@ async function train() {
 				// models_stats[current_model_index].i=i;
 				// models_stats[current_model_index].loss=loss;
 				// models_stats[current_model_index].acc=accuracy;
-				
-				//var t1 = performance.now(); //remove comment if want to count time of train of one batch
-				//console.log((t1 - t0)/1000 + " seconds"); //remove comment if want to count time of train of one batch
 			}
 			//free some gpu memory
 			tf.dispose([batch]);
