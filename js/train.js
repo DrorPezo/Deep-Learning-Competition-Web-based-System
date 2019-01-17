@@ -158,6 +158,7 @@ async function train() {
 	var TestBatchImages;
 	var TestBatchLabels;
 	var validationData;
+	var t0 = performance.now();
 	for(let ii=0;ii<Number(epochs_);ii++){
 		for (let i = 0; i < TRAIN_BATCHES; i++) {
 			//set validation data every 5 train batches
@@ -227,6 +228,8 @@ async function train() {
 			'learning-rate': LEARNING_RATE
 		}})
 		);
+	var t1 = performance.now();
+	console.log("training took " + (t1 - t0) + " milliseconds.")
 	console.log(bucket);
 	console.log(model_name);
 	//await model.save('downloads://my-model-1');
