@@ -158,8 +158,9 @@ async function train() {
 	var TestBatchImages;
 	var TestBatchLabels;
 	var validationData;
-	var t0 = performance.now();
+	
 	for(let ii=0;ii<Number(epochs_);ii++){
+		//var t0 = performance.now();
 		for (let i = 0; i < TRAIN_BATCHES; i++) {
 			//set validation data every 5 train batches
 			if(i%5 == 0){
@@ -170,7 +171,7 @@ async function train() {
 			}
 			const batch = await nextTrainBatch(BATCH_SIZE,i);
 			for (let j=0 ; j < Math.floor(BATCH_SIZE/64);j++){
-				//var t0 = performance.now(); remove comment if want to count time of train of one batch
+				var t0 = performance.now(); remove comment if want to count time of train of one batch
 				if(paused==true){
 					current_outer_index = i;
 					current_inner_index = j;
@@ -201,8 +202,8 @@ async function train() {
 				// models_stats[current_model_index].loss=loss;
 				// models_stats[current_model_index].acc=accuracy;
 				
-				//var t1 = performance.now(); remove comment if want to count time of train of one batch
-				//window.alert((t1 - t0)/1000 + " seconds"); remove comment if want to count time of train of one batch
+				var t1 = performance.now(); remove comment if want to count time of train of one batch
+				console.log((t1 - t0)/1000 + " seconds"); remove comment if want to count time of train of one batch
 			}
 			//free some gpu memory
 			tf.dispose([batch]);
@@ -228,8 +229,7 @@ async function train() {
 			'learning-rate': LEARNING_RATE
 		}})
 		);
-	var t1 = performance.now();
-	console.log("training took " + (t1 - t0) + " milliseconds.")
+	
 	console.log(bucket);
 	console.log(model_name);
 	//await model.save('downloads://my-model-1');
