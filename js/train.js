@@ -160,7 +160,7 @@ async function train() {
 	var validationData;
 	
 	for(let ii=0;ii<Number(epochs_);ii++){
-		//var t0 = performance.now();
+		var t0 = performance.now();
 		for (let i = 0; i < TRAIN_BATCHES; i++) {
 			//set validation data every 5 train batches
 			if(i%5 == 0){
@@ -202,8 +202,8 @@ async function train() {
 				// models_stats[current_model_index].loss=loss;
 				// models_stats[current_model_index].acc=accuracy;
 				
-				var t1 = performance.now(); //remove comment if want to count time of train of one batch
-				console.log((t1 - t0)/1000 + " seconds"); //remove comment if want to count time of train of one batch
+				//var t1 = performance.now(); //remove comment if want to count time of train of one batch
+				//console.log((t1 - t0)/1000 + " seconds"); //remove comment if want to count time of train of one batch
 			}
 			//free some gpu memory
 			tf.dispose([batch]);
@@ -215,6 +215,8 @@ async function train() {
 		}
 		curr_epoch++;
 		epochs--;
+		var t1 = performance.now(); //remove comment if want to count time of train of one batch
+		console.log((t1 - t0)/1000 + " seconds"); //remove comment if want to count time of train of one batch
 	}
 	var bucket = localStorage.getItem('user');
 	var model_name = localStorage.getItem('model_name');
